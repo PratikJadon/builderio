@@ -1,16 +1,23 @@
 .market-snapshot {
   background: var(--background-primary);
-  padding: var(--spacing-md);
-  border-bottom: 1px solid var(--border-light);
+  padding: 20px;
+  border-bottom: 0.5px solid var(--border-light);
   position: sticky;
-  top: 56px;
+  top: 64px;
   z-index: 50;
 }
 
 .market-indices {
   display: flex;
-  gap: var(--spacing-md);
+  gap: 16px;
   overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 4px;
+}
+
+.market-indices::-webkit-scrollbar {
+  display: none;
 }
 
 .market-index {
@@ -19,9 +26,9 @@
   flex-direction: column;
   align-items: center;
   min-width: 100px;
-  padding: var(--spacing-sm);
-  border-radius: var(--border-radius-md);
-  background: var(--background-secondary);
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--background-tertiary);
 }
 
 .index-name {
@@ -49,15 +56,21 @@
 .stock-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 12px;
+  padding: 0 16px;
 }
 
 .stock-item {
   background: var(--background-primary);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-md);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: none;
+  border: none;
+  transition: transform 0.1s ease;
+}
+
+.stock-item:active {
+  transform: scale(0.98);
 }
 
 .stock-header {
@@ -118,11 +131,12 @@
 }
 
 .portfolio-summary {
-  background: linear-gradient(135deg, var(--primary-blue), #1d4ed8);
+  background: linear-gradient(135deg, var(--primary-blue), #0056d1);
   color: white;
-  padding: var(--spacing-lg);
-  border-radius: var(--border-radius-lg);
-  margin-bottom: var(--spacing-md);
+  padding: 24px;
+  border-radius: 20px;
+  margin: 0 16px 20px 16px;
+  box-shadow: 0 8px 32px rgba(0, 122, 255, 0.3);
 }
 
 .portfolio-total {
@@ -166,14 +180,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-md);
-  padding: 0 var(--spacing-md);
+  margin-bottom: 16px;
+  padding: 0 16px;
 }
 
 .section-title {
-  font-size: var(--font-size-lg);
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .section-action {
@@ -185,15 +200,15 @@
 
 .filter-section {
   background: var(--background-primary);
-  padding: var(--spacing-md);
-  border-bottom: 1px solid var(--border-light);
-  margin-bottom: var(--spacing-md);
+  padding: 20px;
+  border-bottom: 0.5px solid var(--border-light);
+  margin-bottom: 20px;
 }
 
 .filter-row {
   display: flex;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-sm);
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .filter-row:last-child {
@@ -202,20 +217,28 @@
 
 .filter-input {
   flex: 1;
-  padding: var(--spacing-sm);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--border-radius-md);
-  font-size: var(--font-size-sm);
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  font-size: 16px;
+  background: var(--background-tertiary);
+  font-weight: 500;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
   background: var(--background-primary);
 }
 
 .filter-select {
-  padding: var(--spacing-sm);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--border-radius-md);
-  font-size: var(--font-size-sm);
-  background: var(--background-primary);
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  font-size: 16px;
+  background: var(--background-tertiary);
   min-width: 120px;
+  font-weight: 500;
 }
 
 .order-item {
