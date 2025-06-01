@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { TrendingUp, TrendingDown, Plus, Star } from "lucide-react";
+import { TrendingUp, TrendingDown } from "lucide-react";
 import {
   formatCurrency,
   formatPercentage,
   getChangeClass,
 } from "../../utils/formatters";
+import ExploreTab from "./ExploreTab";
+import HoldingsTab from "./HoldingsTab";
+import WatchlistTab from "./WatchlistTab";
+import ScreenerTab from "./ScreenerTab";
+import OrdersTab from "./OrdersTab";
 
 const StocksTab = () => {
   const [activeTab, setActiveTab] = useState("explore");
@@ -13,6 +18,7 @@ const StocksTab = () => {
     { id: "explore", label: "Explore" },
     { id: "holdings", label: "Holdings" },
     { id: "watchlist", label: "Watchlist" },
+    { id: "screener", label: "Screener" },
     { id: "orders", label: "Orders" },
   ];
 
@@ -42,6 +48,23 @@ const StocksTab = () => {
     { name: "SENSEX", value: 65953.48, change: 1.18 },
     { name: "BANK NIFTY", value: 44362.8, change: -0.85 },
   ];
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "explore":
+        return <ExploreTab />;
+      case "holdings":
+        return <HoldingsTab />;
+      case "watchlist":
+        return <WatchlistTab />;
+      case "screener":
+        return <ScreenerTab />;
+      case "orders":
+        return <OrdersTab />;
+      default:
+        return <ExploreTab />;
+    }
+  };
 
   return (
     <div className="stocks-tab">
@@ -81,49 +104,7 @@ const StocksTab = () => {
       </nav>
 
       {/* Tab Content */}
-      <div className="tab-content">
-        <div className="section-header">
-          <h2 className="section-title">Top Gainers</h2>
-        </div>
-
-        <div className="stock-list">
-          {sampleStocks.map((stock) => (
-            <div key={stock.symbol} className="stock-item">
-              <div className="stock-header">
-                <div className="stock-info">
-                  <div className="stock-name">{stock.name}</div>
-                  <div className="stock-symbol">{stock.symbol}</div>
-                </div>
-                <div className="stock-price-info">
-                  <div className="stock-price">
-                    {formatCurrency(stock.price)}
-                  </div>
-                  <div
-                    className={`stock-change ${getChangeClass(stock.change)}`}
-                  >
-                    {stock.change > 0 ? (
-                      <TrendingUp size={14} />
-                    ) : (
-                      <TrendingDown size={14} />
-                    )}
-                    {formatPercentage(stock.change)}
-                  </div>
-                </div>
-              </div>
-              <div className="stock-actions">
-                <button className="button button-primary button-small">
-                  <Plus size={14} />
-                  Buy
-                </button>
-                <button className="button button-secondary button-small">
-                  <Star size={14} />
-                  Watchlist
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <div className="tab-content">{renderTabContent()}</div>
     </div>
   );
 };
